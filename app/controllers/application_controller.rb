@@ -46,6 +46,7 @@ class ApplicationController < Sinatra::Base
       user.save
       binding.pry
       if user && user.authenticate(params[:password])
+        session[:user_id] = user.id
         redirect '/account'
       end
     end
